@@ -7,8 +7,6 @@
 
 #include "Group.h"
 
-namespace BoardGame {
-
 char Group::getSymbol()
 {
 	return m_symbol;
@@ -27,6 +25,3 @@ int Group::getAge()
 Group* Group::getDummy(){
 	return new Group();
 }
-
-
-} /* namespace Boardgame */

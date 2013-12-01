@@ -7,15 +7,10 @@
 
 #include "Position.h"
 
-namespace BoardGame
-{
-
 char Position::getRow(){
 	return row;
 }
 
 int Position::getCol(){
 	return col;
-}
-
 }

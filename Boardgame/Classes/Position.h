@@ -8,9 +8,6 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
-namespace BoardGame
-{
-
 class Position {
 
 private:
@@ -22,7 +19,5 @@ public:
 	char getRow();
 	int getCol();
 };
-
-}
 
 #endif /* POSITION_H_ */

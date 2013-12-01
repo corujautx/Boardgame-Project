@@ -11,8 +11,6 @@
 #include <iostream>
 #include <vector>
 
-namespace BoardGame {
-
 template <class T>
 class Board {
 private:
@@ -20,14 +18,12 @@ private:
 	std::vector< std::vector<T> > matrix;
 public:
 	Board(int, int);
-	virtual ~Board();
+	~Board();
 
 	void placeTile(unsigned char, int, T);
 	T getTileAt(unsigned char, int);
 	std::vector<T> getAdjacent(unsigned char, int);
 };
-
-} /* namespace Boardgame */
 
 #endif /* BOARD_H_ */
 

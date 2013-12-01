@@ -6,8 +6,7 @@
  */
 
 #include "Board.h"
-
-namespace BoardGame {
+#include <string>
 
 template <class T>
 Board<T>::Board(int m, int n) : m_columns(m), m_lines(n) {
@@ -80,4 +79,5 @@ std::vector<T> Board<T>::getAdjacent(unsigned char column, int line)
 	return adjacent;
 }
 
-} /* namespace Boardgame */
+//relevant construction
+template class Board<std::string>;

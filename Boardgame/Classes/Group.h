@@ -11,8 +11,6 @@
 #include <iostream>
 #include <string>
 
-namespace BoardGame {
-
 class Group {
 private:
 	char m_symbol;
@@ -29,7 +27,5 @@ public:
 	int getAge();
 	static Group* getDummy();
 };
-
-} /* namespace Boardgame */
 
 #endif /* GROUP_H_ */
