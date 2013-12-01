@@ -20,12 +20,14 @@ private:
 	int m_age;
 public:
 	//constructors, destructors, assignment operator, copy constructor
+	Group() : m_symbol(), m_name(), m_age() {};
 	Group(char symbol, std::string name, int age) : m_symbol(symbol), m_name(name), m_age(age) {};
 
 	//class methods
 	char getSymbol();
 	std::string getName();
 	int getAge();
+	static Group* getDummy();
 };
 
 } /* namespace Boardgame */

@@ -24,4 +24,9 @@ int Group::getAge()
 	return m_age;
 }
 
+Group* Group::getDummy(){
+	return new Group();
+}
+
+
 } /* namespace Boardgame */

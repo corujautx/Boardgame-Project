@@ -11,7 +11,7 @@ int main()
 {
 	int a;
 
-	std::cout << "test" << std::endl;
+	std::cout << "test, shared with Albert" << std::endl;
 	std::cin >> a;
 	return 0;
 }
