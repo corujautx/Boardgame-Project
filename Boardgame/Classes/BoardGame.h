@@ -28,11 +28,4 @@ public:
 	void PlayAt(Position pos);
 };
 
-template <class T>
-BoardGame<T>::BoardGame(int row, int col):
-	board(row,col)
-{
-	groups.insert(std::pair<T,Group*>(0,Group::getDummy()));
-}
-
 #endif /* BOARDGAME_H_ */
