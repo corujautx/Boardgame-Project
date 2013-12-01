@@ -8,6 +8,9 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
+namespace BoardGame
+{
+
 class Position {
 
 private:
@@ -20,14 +23,6 @@ public:
 	int getCol();
 };
 
-
-char Position::getRow(){
-	return row;
 }
-
-int Position::getCol(){
-	return col;
-}
-
 
 #endif /* POSITION_H_ */

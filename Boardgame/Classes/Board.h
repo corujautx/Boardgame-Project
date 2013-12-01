@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-namespace Boardgame {
+namespace BoardGame {
 
 template <class T>
 class Board {

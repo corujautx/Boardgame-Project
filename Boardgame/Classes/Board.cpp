@@ -7,7 +7,7 @@
 
 #include "Board.h"
 
-namespace Boardgame {
+namespace BoardGame {
 
 template <class T>
 Board<T>::Board(int m, int n) : m_columns(m), m_lines(n) {

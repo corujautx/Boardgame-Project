@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-namespace Boardgame {
+namespace BoardGame {
 
 class Group {
 private:

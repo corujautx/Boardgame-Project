@@ -7,7 +7,7 @@
 
 #include "Group.h"
 
-namespace Boardgame {
+namespace BoardGame {
 
 char Group::getSymbol()
 {
