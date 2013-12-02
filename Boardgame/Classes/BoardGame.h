@@ -16,16 +16,17 @@
 
 using namespace std;
 
-template <class T>
 class BoardGame {
 
 private:
-	Board<T> board;
-	map<T, Group*> groups;
+	char m_symbol_counter;
+	Board<char> board;
+	map<char, Group> groups;
 
 public:
-	BoardGame(int,int);
-	void PlayAt(Position pos);
+	BoardGame(int, int);
+	int PlayAt(Position, string, int);
+	friend ostream& operator<<(ostream&, const BoardGame&);
 };
 
 #endif /* BOARDGAME_H_ */

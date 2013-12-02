@@ -11,13 +11,13 @@
 class Position {
 
 private:
-	char row;
-	int col;
+	int row;
+	char col;
 
 public:
-	Position(char c,int i) : row(c) , col(i){};
-	char getRow();
-	int getCol();
+	Position(char c,int i) : row(i), col(c){};
+	int getRow();
+	char getCol();
 };
 
 #endif /* POSITION_H_ */

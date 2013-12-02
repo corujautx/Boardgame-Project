@@ -6,39 +6,55 @@
  */
 
 #include <iostream>
-#include "Classes/Board.h"
+#include "Classes/BoardGame.h"
 #include <string>
 using namespace std;
 
 int main()
 {
-	Board<string> A(10,10);
+	int turn = 0;
+	int countP1 = 0; int countP2 = 0;
 
-	A.placeTile('A',3,"Up");
-	A.placeTile('C',3,"Down");
-	A.placeTile('B',2,"Left");
-	A.placeTile('B',4,"Right");
-	A.placeTile('B',3,"Centre");
+	BoardGame bg(8,8);
+	while((countP1 < 41) && (countP2 < 41))
+	{
+		cout << "\nTurn: " << turn/2 + 1 << "Score: " << countP1 << " " << countP2 << endl;
+		cout << ((turn % 2) == 0 ? "Player 1" : "Player 2") << " turn" << endl;
+		cout << "\n" << bg << "\n" << endl;
 
-	cout << A.getTileAt('B',3)<< endl;
-	cout << A.getTileAt('A',3)<< endl;
-	cout << A.getTileAt('C',3)<< endl;
-	cout << A.getTileAt('G',2)<< endl;
-	cout << A.getTileAt('B',4)<< endl;
+		char col;
+		int row;
 
+		cin >> col >> row;
 
-	cout << endl;
+		try
+		{
+			int count = bg.PlayAt(Position(col, row), (turn % 2) == 0 ? "Player 1" : "Player 2", turn);
+			if(turn%2 == 0)
+			{
+				countP1 += count;
+			}
+			else
+			{
+				countP2 += count;
+			}
+		}
+		catch(string& exception)
+		{
+			cout << "Invalid play! (Lost your turn)\n" << endl;
+		}
 
-	cout << A.isLegal('A',4) << ' ' <<  A.isLegal('B',2) << ' ' <<  A.isLegal('A',3) << ' ' <<  A.isLegal('G',3);
+		turn++;
+	}
 
-	cout << endl;
+	cout << "Game over!" << endl;
+	cout << bg << endl;
 
-	vector<string> filled(A.getFilledAdjacent('B', 3));
+	cout << (countP1 > countP2 ? "Player 1 wins!" : "Player 2 wins") << endl;
 
-	for(int i = 0; i< filled.size(); ++i)
-		cout<< filled[i] << " x ";
+	system("pause");
 
-	return 1;
+	return 0;
 }
 
 

@@ -7,10 +7,6 @@
 
 #include "Group.h"
 
-
-char Group::m_symbol_counter = 'A';
-
-
 char Group::getSymbol()
 {
 	return m_symbol;
@@ -26,6 +22,6 @@ int Group::getAge()
 	return m_age;
 }
 
-Group* Group::getDummy(){
-	return new Group();
+Group Group::getDummy(){
+	return Group();
 }

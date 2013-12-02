@@ -6,7 +6,6 @@
  */
 
 #include "Board.h"
-#include <string>
 
 template <class T>
 Board<T>::Board(int m, int n) : m_columns(m), m_lines(n) {
@@ -115,6 +114,49 @@ std::vector<T> Board<T>::getFilledAdjacent(unsigned char column, int line){
 	return filled;
 }
 
+template <class T2>
+std::ostream& operator<<(std::ostream& out, const Board<T2>& board)
+{
+	for(int i = 0 ; i < board.m_lines; i++)
+	{
+		for(int j = 0; j < board.m_columns ; j++)
+		{
+			if(board.matrix[j][i] == (char)0)
+				out << " .";
+			else
+				out << board.matrix[j][i] << ".";
+		}
+		out << std::endl;
+	}
+	return out;
+}
 
-//relevant construction
-template class Board<std::string>;
+template <class T>
+int Board<T>::getColumns()
+{
+	return m_columns;
+}
+
+template <class T>
+int Board<T>::getRows()
+{
+	return m_lines;
+}
+
+template <class T>
+int Board<T>::mergeGroups(T acquiredGroupIdentifier, T acquiringGroupIdentifier)
+{
+	int count = 0;
+	for(int i=0; i < m_columns; i++)
+	{
+		for(int j=0; j < m_lines; j++)
+		{
+			if(matrix[i][j] == acquiredGroupIdentifier)
+			{
+				matrix[i][j] = acquiringGroupIdentifier;
+				count++;
+			}
+		}
+	}
+	return count;
+}

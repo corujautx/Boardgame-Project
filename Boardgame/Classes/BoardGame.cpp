@@ -5,25 +5,60 @@
  *      Author: Albert
  */
 #include "BoardGame.h"
+#include <set>
 
-template <class T>
-BoardGame<T>::BoardGame(int row, int col):
-	board(row,col)
+BoardGame::BoardGame(int columns, int rows): m_symbol_counter('A'), board(columns, rows)
 {
-	groups.insert(std::pair<T,Group*>(0,Group::getDummy()));
+	groups.insert(std::pair<char,Group>(char(), Group::getDummy()));
 }
 
-template <class T>
-void BoardGame<T>::PlayAt(Position pos){
-	try
+int BoardGame::PlayAt(Position pos, string name, int step)
+{
+	char column = pos.getCol();
+	int line = pos.getRow();
+	if(!board.isLegal(column, line))
 	{
-		if(!board.isLegal(pos.getCol(), pos.getRow()))
-		{
-			throw std::string("Illegal Move");
-		}
+		throw std::string("Illegal Move");
 	}
-	catch(std::string& e)
+
+	vector<char> filled(board.getFilledAdjacent(column,line));
+	if(filled.size() == 0)
 	{
-		cout << e << endl;
+		groups.insert(std::pair<char, Group>(m_symbol_counter, Group(m_symbol_counter, name, step)));
+		board.placeTile(column, line, m_symbol_counter);
+		++m_symbol_counter;
+		return 1;
+	}
+	else
+	{
+		set<Group> groupsFilled;
+		for(unsigned int i = 0; i < filled.size(); i++)
+		{
+			groupsFilled.insert(groups[filled[i]]);
+		}
+
+		vector<Group> finalGroup;
+		copy(groupsFilled.begin(), groupsFilled.end(), back_inserter(finalGroup));
+
+		cout << finalGroup.rbegin()->getSymbol() << endl;
+
+		board.placeTile(column, line, (finalGroup.rbegin())->getSymbol());
+
+		int countReplace = 1;
+		for(vector<Group>::iterator it = finalGroup.begin(); it != finalGroup.end() - 1; it++)
+		{
+			countReplace += board.mergeGroups(it->getSymbol(), (finalGroup.rbegin())->getSymbol());
+		}
+
+		groups[finalGroup.rbegin()->getSymbol()].increaseSizeBy(countReplace);
+		return countReplace;
 	}
 }
+
+ostream& operator<<(ostream& os, const BoardGame& boardGame)
+{
+	os << boardGame.board << endl;
+	return os;
+}
+
+

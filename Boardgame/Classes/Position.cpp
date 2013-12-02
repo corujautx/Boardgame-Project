@@ -7,10 +7,10 @@
 
 #include "Position.h"
 
-char Position::getRow(){
+int Position::getRow(){
 	return row;
 }
 
-int Position::getCol(){
+char Position::getCol(){
 	return col;
 }

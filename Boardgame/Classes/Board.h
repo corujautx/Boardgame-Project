@@ -10,8 +10,7 @@
 
 #include <iostream>
 #include <vector>
-
-
+#include <string>
 
 template <class T>
 class Board {
@@ -28,8 +27,17 @@ public:
 	bool isLegal(unsigned char column, int line);
 	bool isValid(unsigned char column, int line);
 	std::vector<T> getFilledAdjacent(unsigned char column, int line);
+	int mergeGroups(T, T);
+
+	template <class T2> friend std::ostream& operator<<(std::ostream&, const Board<T2>&);
+
+	int getColumns();
+	int getRows();
 };
 
+//relevant construction
+template class Board<std::string>;
+template class Board<char>;
 
 
 #endif /* BOARD_H_ */
