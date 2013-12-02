@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <cstdlib>
 #include "Classes/BoardGame.h"
 #include <string>
 using namespace std;
