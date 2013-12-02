@@ -7,6 +7,10 @@
 
 #include "Group.h"
 
+
+char Group::m_symbol_counter = 'A';
+
+
 char Group::getSymbol()
 {
 	return m_symbol;

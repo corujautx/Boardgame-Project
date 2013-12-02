@@ -8,11 +8,12 @@
 #ifndef BOARDGAME_H_
 #define BOARDGAME_H_
 
-#include <map>
-#include <string>
-#include "Board.h"
+
+#include "Board.cpp"
 #include "Group.h"
 #include "Position.h"
+#include <map>
+
 using namespace std;
 
 template <class T>
@@ -24,7 +25,6 @@ private:
 
 public:
 	BoardGame(int,int);
-	virtual ~BoardGame();
 	void PlayAt(Position pos);
 };
 

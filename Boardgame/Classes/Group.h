@@ -13,6 +13,7 @@
 
 class Group {
 private:
+	static char m_symbol_counter;
 	char m_symbol;
 	std::string m_name;
 	int m_age;
@@ -25,6 +26,7 @@ public:
 	char getSymbol();
 	std::string getName();
 	int getAge();
+	char incCounter();
 	static Group* getDummy();
 };
 

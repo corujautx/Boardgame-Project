@@ -79,5 +79,42 @@ std::vector<T> Board<T>::getAdjacent(unsigned char column, int line)
 	return adjacent;
 }
 
+template <class T>
+bool Board<T>::isLegal(unsigned char column, int line){
+	if((column >= 'A') && (column < (m_columns + 'A')) && (line >= 0) && (line < m_lines))
+	{
+		if(getTileAt(column,line) == T())
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+}
+
+template <class T>
+bool Board<T>::isValid(unsigned char column, int line){
+	if((column >= 'A') && (column < (m_columns + 'A')) && (line >= 0) && (line < m_lines))
+		return true;
+	else
+		return false;
+}
+
+template<class T>
+std::vector<T> Board<T>::getFilledAdjacent(unsigned char column, int line){
+	std::vector<T> filled;
+
+	if(this->isValid(column, line)){
+		std::vector<T> adj(this->getAdjacent(column, line));
+
+		for(int i = 0; i< adj.size(); ++i){
+			if(adj[i] != T())
+				filled.push_back(adj[i]);
+		}
+	}
+	return filled;
+}
+
+
 //relevant construction
 template class Board<std::string>;

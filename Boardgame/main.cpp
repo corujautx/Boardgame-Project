@@ -6,9 +6,6 @@
  */
 
 #include <iostream>
-#include "Classes/Group.h"
-#include "Classes/Position.h"
-#include "Classes/BoardGame.h"
 #include "Classes/Board.h"
 #include <string>
 using namespace std;
@@ -29,7 +26,19 @@ int main()
 	cout << A.getTileAt('G',2)<< endl;
 	cout << A.getTileAt('B',4)<< endl;
 
-	return 0;
+
+	cout << endl;
+
+	cout << A.isLegal('A',4) << ' ' <<  A.isLegal('B',2) << ' ' <<  A.isLegal('A',3) << ' ' <<  A.isLegal('G',3);
+
+	cout << endl;
+
+	vector<string> filled(A.getFilledAdjacent('B', 3));
+
+	for(int i = 0; i< filled.size(); ++i)
+		cout<< filled[i] << " x ";
+
+	return 1;
 }
 
 
